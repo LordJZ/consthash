@@ -1,6 +1,6 @@
 
 #include <cityhash/city.h>
-#include <consthash/u128.hxx>
+#include <consthash/cityhash_util.hxx>
 #include "tests.hxx"
 
 #ifdef _MSC_VER

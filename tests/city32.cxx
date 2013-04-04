@@ -1,5 +1,6 @@
 
 #include "tests.hxx"
+#include <consthash/cityhash32.hxx>
 #include <cityhash/city.h>
 
 #define CH_DET_TEST_FUNC_WITH(FUNCNAME, WITH_WHAT) \

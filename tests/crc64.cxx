@@ -1,5 +1,6 @@
 
 #include "tests.hxx"
+#include <consthash/crc64.hxx>
 
 extern "C" uint64_t crc64(uint64_t crc, const void *buf, size_t size);
 

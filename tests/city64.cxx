@@ -1,5 +1,6 @@
 
 #include "tests.hxx"
+#include <consthash/cityhash64.hxx>
 #include <cityhash/city.h>
 
 struct city64_traits

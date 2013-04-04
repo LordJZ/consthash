@@ -6,7 +6,7 @@
 #include <cstddef>
 #include <type_traits>
 //#include <cstdio>
-#include <consthash/all.hxx>
+#include <consthash/common.hxx>
 #include <gtest/gtest.h>
 
 // Standard traits declaration
