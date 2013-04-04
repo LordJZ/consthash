@@ -20,11 +20,14 @@
 
 #define RT2CT_CURRENT(x) RT2CT_NULL(x)
 
+#define CONCAT(...) __VA_ARGS__
+
 #define _HASHER_TEST_SINGLE(SUBNAME, STR, LEN, NAME, TRAITS, RT2CT) \
     TEST(NAME, SUBNAME) \
     { \
-        auto constexpr ct_res = TRAITS::hash_ct(STR, LEN); \
-        TRAITS::compare<RT2CT(ct_res)>(TRAITS::hash_rt(STR, LEN)); \
+        typedef TRAITS traits; \
+        auto constexpr ct_res = traits::hash_ct(STR, LEN); \
+        traits::compare<RT2CT(ct_res)>(traits::hash_rt(STR, LEN)); \
     }
 
 #define FOR_EACH_STR_0to16(DO, ...) \
@@ -59,22 +62,22 @@
     DO(many4, "Maecenas euismod odio ut erat euismod vel luctus turpis interdum. Sed lobortis nisl vel tortor aliquam in viverra nunc ultrices. Proin ut diam purus. Curabitur dapibus nunc vel enim dignissim nec semper elit mollis. Sed ante dolor, commodo quis placerat vitae, varius non lorem. Ut ut pulvinar purus.", 300, ##__VA_ARGS__)
 
 #define HASHER_TEST_0to16(NAME, TRAITS, RT2CT) \
-    FOR_EACH_STR_0to16(_HASHER_TEST_SINGLE, NAME, TRAITS, RT2CT)
+    FOR_EACH_STR_0to16(_HASHER_TEST_SINGLE, NAME, CONCAT(TRAITS), RT2CT)
 
 #define HASHER_TEST_17to32(NAME, TRAITS, RT2CT) \
-    FOR_EACH_STR_17to32(_HASHER_TEST_SINGLE, NAME, TRAITS, RT2CT)
+    FOR_EACH_STR_17to32(_HASHER_TEST_SINGLE, NAME, CONCAT(TRAITS), RT2CT)
 
 #define HASHER_TEST_33to64(NAME, TRAITS, RT2CT) \
-    FOR_EACH_STR_33to64(_HASHER_TEST_SINGLE, NAME, TRAITS, RT2CT)
+    FOR_EACH_STR_33to64(_HASHER_TEST_SINGLE, NAME, CONCAT(TRAITS), RT2CT)
 
 #define HASHER_TEST_65(NAME, TRAITS, RT2CT) \
-    FOR_EACH_STR_65(_HASHER_TEST_SINGLE, NAME, TRAITS, RT2CT)
+    FOR_EACH_STR_65(_HASHER_TEST_SINGLE, NAME, CONCAT(TRAITS), RT2CT)
 
 #define HASHER_TEST_ALL(NAME, TRAITS, RT2CT) \
-	HASHER_TEST_0to16(NAME, TRAITS, RT2CT); \
-	HASHER_TEST_17to32(NAME, TRAITS, RT2CT); \
-	HASHER_TEST_33to64(NAME, TRAITS, RT2CT); \
-	HASHER_TEST_65(NAME, TRAITS, RT2CT)
+	HASHER_TEST_0to16(NAME, CONCAT(TRAITS), RT2CT); \
+	HASHER_TEST_17to32(NAME, CONCAT(TRAITS), RT2CT); \
+	HASHER_TEST_33to64(NAME, CONCAT(TRAITS), RT2CT); \
+	HASHER_TEST_65(NAME, CONCAT(TRAITS), RT2CT)
 
 #define HASHER_TEST_ALL_STD_TRAITS(NAME, RT2CT) \
     HASHER_TEST_ALL(NAME, NAME ## _traits, RT2CT)
