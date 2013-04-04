@@ -26,10 +26,10 @@ static const uint32_t c2 = 0x1b873593;
 
 constexpr uint64_t swap_bytes_64(uint64_t value)
 {
-  return (value & 0x00000000000000FFUL) << 56 | (value & 0x000000000000FF00UL) << 40 |
-         (value & 0x0000000000FF0000UL) << 24 | (value & 0x00000000FF000000UL) << 8 |
-         (value & 0x000000FF00000000UL) >> 8 | (value & 0x0000FF0000000000UL) >> 24 |
-         (value & 0x00FF000000000000UL) >> 40 | (value & 0xFF00000000000000UL) >> 56;
+  return (value & 0x00000000000000FFULL) << 56 | (value & 0x000000000000FF00ULL) << 40 |
+         (value & 0x0000000000FF0000ULL) << 24 | (value & 0x00000000FF000000ULL) << 8 |
+         (value & 0x000000FF00000000ULL) >> 8 | (value & 0x0000FF0000000000ULL) >> 24 |
+         (value & 0x00FF000000000000ULL) >> 40 | (value & 0xFF00000000000000ULL) >> 56;
 }
 
 constexpr uint32_t swap_bytes_32(uint32_t value)
@@ -69,22 +69,22 @@ constexpr uint32_t fmix(uint32_t h)
 
 constexpr uint64_t Fetch64(const char *p) {
   return
-    (static_cast<uint64_t>(p[0]) << 0) |
-    (static_cast<uint64_t>(p[1]) << 8) |
-    (static_cast<uint64_t>(p[2]) << 16) |
-    (static_cast<uint64_t>(p[3]) << 24) |
-    (static_cast<uint64_t>(p[4]) << 32) |
-    (static_cast<uint64_t>(p[5]) << 40) |
-    (static_cast<uint64_t>(p[6]) << 48) |
-    (static_cast<uint64_t>(p[7]) << 56);
+    (static_cast<uint64_t>((uint8_t)p[0])) |
+    (static_cast<uint64_t>((uint8_t)p[1]) << 8) |
+    (static_cast<uint64_t>((uint8_t)p[2]) << 16) |
+    (static_cast<uint64_t>((uint8_t)p[3]) << 24) |
+    (static_cast<uint64_t>((uint8_t)p[4]) << 32) |
+    (static_cast<uint64_t>((uint8_t)p[5]) << 40) |
+    (static_cast<uint64_t>((uint8_t)p[6]) << 48) |
+    (static_cast<uint64_t>((uint8_t)p[7]) << 56);
 }
 
 constexpr uint32_t Fetch32(const char *p) {
   return
-    (static_cast<uint32_t>(p[0]) << 0) |
-    (static_cast<uint32_t>(p[1]) << 8) |
-    (static_cast<uint32_t>(p[2]) << 16) |
-    (static_cast<uint32_t>(p[3]) << 24);
+    (static_cast<uint32_t>((uint8_t)p[0])) |
+    (static_cast<uint32_t>((uint8_t)p[1]) << 8) |
+    (static_cast<uint32_t>((uint8_t)p[2]) << 16) |
+    (static_cast<uint32_t>((uint8_t)p[3]) << 24);
 }
 
 constexpr uint32_t Rotate32(uint32_t val, int shift) {

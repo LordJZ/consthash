@@ -68,8 +68,40 @@ TEST(city_utility, HashLen16_3) { CH_DET_TEST_FUNC_64_64_64(HashLen16); };
 
 CH_DET_TEST_FUNC_WITH(Mur, CH_DET_TEST_FUNC_32_32);
 
-CH_DET_TEST_FUNC_WITH(Fetch64, CH_DET_TEST_FUNC_LONG_STR);
-CH_DET_TEST_FUNC_WITH(Fetch32, CH_DET_TEST_FUNC_LONG_STR);
+CONSTHASH_NAMESPACE_BEGIN;
+namespace __detail {;
+
+constexpr uint64_t Fetch64_wrapper(const char* s, size_t len)
+{
+    return len < sizeof(uint64_t) ? 0 : Fetch64(s);
+}
+
+constexpr uint32_t Fetch32_wrapper(const char* s, size_t len)
+{
+    return len < sizeof(uint32_t) ? 0 : Fetch32(s);
+}
+
+}; // namespace __detail
+CONSTHASH_NAMESPACE_END;
+
+uint64_t Fetch64_wrapper(const char* s, size_t len)
+{
+    if (len < sizeof(uint64_t))
+        return 0;
+
+    return Fetch64(s);
+}
+
+uint32_t Fetch32_wrapper(const char* s, size_t len)
+{
+    if (len < sizeof(uint32_t))
+        return 0;
+
+    return Fetch32(s);
+}
+
+CH_DET_TEST_FUNC_WITH(Fetch64_wrapper, CH_DET_TEST_FUNC_STRS);
+CH_DET_TEST_FUNC_WITH(Fetch32_wrapper, CH_DET_TEST_FUNC_STRS);
 
 #undef RT2CT_CURRENT
 #define RT2CT_CURRENT(x) RT2CT128_T(x)
