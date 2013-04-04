@@ -248,12 +248,35 @@ constexpr uint64_t city64impl(const char *s, size_t len)
         len <= 64 ? HashLen33to64(s, len) : city64impl_sub1(s, len);
 }
 
-} // namespace
+constexpr uint64_t city64_seeds_impl(const char *s, size_t len,
+                                       uint64_t seed0, uint64_t seed1) {
+  return HashLen16(city64impl(s, len) - seed0, seed1);
+}
+
+constexpr uint64_t city64_seed_impl(const char *s, size_t len, uint64_t seed) {
+  return city64_seeds_impl(s, len, k2, seed);
+}
+
+} // namespace __detail
 
 // Hash function for a byte array.
 constexpr uint64_t city64(const char *buf, size_t len)
 {
     return __detail::city64impl(buf, len);
+}
+
+// Hash function for a byte array.  For convenience, a 64-bit seed is also
+// hashed into the result.
+constexpr uint64_t city64_seed(const char *buf, size_t len, uint64_t seed)
+{
+    return __detail::city64_seed_impl(buf, len, seed);
+}
+
+// Hash function for a byte array.  For convenience, two seeds are also
+// hashed into the result.
+constexpr uint64_t city64_seeds(const char *buf, size_t len, uint64_t seed0, uint64_t seed1)
+{
+    return __detail::city64_seeds_impl(buf, len, seed0, seed1);
 }
 
 CONSTHASH_NAMESPACE_END;
