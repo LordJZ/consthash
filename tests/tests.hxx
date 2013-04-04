@@ -225,17 +225,17 @@
     DO(ARG, 0x9ae16a3b2f90404fULL, ##__VA_ARGS__)
 
 #define FOR_EACH_128_BIT(ARG, DO, ...) \
-    DO(ARG, (consthash::__detail::rtu128_t(0ULL, 0ULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(1ULL, 1ULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(1ULL, 0ULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(0ULL, 1ULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(0xFFFFFFFFFFFFFFFFULL, 0xFFFFFFFFFFFFFFFFULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(0xFFFFFFFFFFFFFFFFULL, 0ULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(0ULL, 0xFFFFFFFFFFFFFFFFULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(0xc3a5c85c97cb3127ULL, 0xb492b66fbe98f273ULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(0ULL, 0xc3a5c85c97cb3127ULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(0xb492b66fbe98f273ULL, 0ULL)), ##__VA_ARGS__); \
-    DO(ARG, (consthash::__detail::rtu128_t(0x9ae16a3b2f90404fULL, 1ULL)), ##__VA_ARGS__)
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(0ULL, 0ULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(1ULL, 1ULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(1ULL, 0ULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(0ULL, 1ULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(0xFFFFFFFFFFFFFFFFULL, 0xFFFFFFFFFFFFFFFFULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(0xFFFFFFFFFFFFFFFFULL, 0ULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(0ULL, 0xFFFFFFFFFFFFFFFFULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(0xc3a5c85c97cb3127ULL, 0xb492b66fbe98f273ULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(0ULL, 0xc3a5c85c97cb3127ULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(0xb492b66fbe98f273ULL, 0ULL)), ##__VA_ARGS__); \
+    DO(ARG, CONCAT(consthash::__detail::rtu128_t(0x9ae16a3b2f90404fULL, 1ULL)), ##__VA_ARGS__)
 
 #define HASHER_TEST_TO_CH_DET_FUNC_CONVERTER(STR_NAME, STR, STR_LEN, FUNCNAME, ...) \
     CH_DET_TEST_FUNC(FUNCNAME, STR, STR_LEN, ##__VA_ARGS__);

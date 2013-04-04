@@ -384,7 +384,7 @@ uint64 CityHash64WithSeeds(const char *s, size_t len,
 
 // A subroutine for CityHash128().  Returns a decent 128-bit hash for strings
 // of any length representable in signed long.  Based on City and Murmur.
-static uint128 CityMurmur(const char *s, size_t len, uint128 seed) {
+uint128 CityMurmur(const char *s, size_t len, uint128 seed) {
   uint64 a = Uint128Low64(seed);
   uint64 b = Uint128High64(seed);
   uint64 c = 0;

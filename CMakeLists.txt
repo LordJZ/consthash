@@ -18,6 +18,7 @@ add_executable(consthashtests
     tests/city.cxx
     tests/city32.cxx
     tests/city64.cxx
+    tests/city128.cxx
     )
 
 target_link_libraries(consthashtests gtest rtfuncs cityhash)
