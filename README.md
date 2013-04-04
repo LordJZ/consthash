@@ -4,6 +4,8 @@ consthash
 This is a header-only library for C++11 used to compute various hash functions at compile time.
 All dependencies are required for tests only.
 
+Big-endian is most likely broken for now.
+
 _____________
 Currently supported:
 
