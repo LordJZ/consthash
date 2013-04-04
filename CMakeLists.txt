@@ -16,6 +16,7 @@ add_executable(consthashtests
     tests/crc32.cxx
     tests/crc64.cxx
     tests/city.cxx
+    tests/city32.cxx
     tests/city64.cxx
     )
 

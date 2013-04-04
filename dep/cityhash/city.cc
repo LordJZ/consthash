@@ -128,7 +128,7 @@ uint32 Mur(uint32 a, uint32 h) {
   return h * 5 + 0xe6546b64;
 }
 
-static uint32 Hash32Len13to24(const char *s, size_t len) {
+uint32 Hash32Len13to24(const char *s, size_t len) {
   uint32 a = Fetch32(s - 4 + (len >> 1));
   uint32 b = Fetch32(s + 4);
   uint32 c = Fetch32(s + len - 8);
@@ -140,7 +140,7 @@ static uint32 Hash32Len13to24(const char *s, size_t len) {
   return fmix(Mur(f, Mur(e, Mur(d, Mur(c, Mur(b, Mur(a, h)))))));
 }
 
-static uint32 Hash32Len0to4(const char *s, size_t len) {
+uint32 Hash32Len0to4(const char *s, size_t len) {
   uint32 b = 0;
   uint32 c = 9;
   for (size_t i = 0; i < len; i++) {
@@ -150,7 +150,7 @@ static uint32 Hash32Len0to4(const char *s, size_t len) {
   return fmix(Mur(b, Mur(len, c)));
 }
 
-static uint32 Hash32Len5to12(const char *s, size_t len) {
+uint32 Hash32Len5to12(const char *s, size_t len) {
   uint32 a = len, b = len * 5, c = 9, d = b;
   a += Fetch32(s);
   b += Fetch32(s + len - 4);

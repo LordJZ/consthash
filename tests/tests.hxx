@@ -38,7 +38,7 @@
     DO(12,              "12", 2, ##__VA_ARGS__); \
     DO(123,             "123", 3, ##__VA_ARGS__); \
     DO(0xFFFFFFFF,      "\xFF\xFF\xFF\xFF", 4, ##__VA_ARGS__); \
-    DO(four,            "four", 4, ##__VA_ARGS__); \
+    DO(four,            "four", 4, ##__VA_ARGS__)
 
 #define FOR_EACH_STR_5to8(DO, ...) \
     DO(null_teminated,  "woot\0", 5, ##__VA_ARGS__); \
@@ -86,6 +86,10 @@
     FOR_EACH_STR_9to12(DO, ##__VA_ARGS__); \
     FOR_EACH_STR_13to16(DO, ##__VA_ARGS__)
 
+#define FOR_EACH_STR_5to12(DO, ...) \
+    FOR_EACH_STR_5to8(DO, ##__VA_ARGS__); \
+    FOR_EACH_STR_9to12(DO, ##__VA_ARGS__); \
+
 #define FOR_EACH_STR_17to32(DO, ...) \
     FOR_EACH_STR_17to24(DO, ##__VA_ARGS__); \
     FOR_EACH_STR_25to32(DO, ##__VA_ARGS__)
@@ -98,7 +102,7 @@
     FOR_EACH_STR_0to16(DO, ##__VA_ARGS__); \
     FOR_EACH_STR_17to32(DO, ##__VA_ARGS__); \
     FOR_EACH_STR_33to64(DO, ##__VA_ARGS__); \
-    FOR_EACH_STR_65(DO, ##__VA_ARGS__) \
+    FOR_EACH_STR_65(DO, ##__VA_ARGS__)
 
 #define HASHER_TEST_0to4(NAME, TRAITS, RT2CT) \
     FOR_EACH_STR_0to4(_HASHER_TEST_SINGLE, NAME, CONCAT(TRAITS), RT2CT)
