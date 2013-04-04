@@ -11,7 +11,8 @@ Currently supported:
 
 - CRC 32 bit
 - CRC 64 bit
-- Google CityHash 64 (0, 1, 2 seed versions)
+- Google CityHash 32 bit
+- Google CityHash 64 bit (0/1/2 seed versions)
 
 _____________
 Usage example:

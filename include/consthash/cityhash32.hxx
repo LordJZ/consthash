@@ -50,7 +50,7 @@ constexpr uint32_t Hash32Len5to12(const char *s, size_t len) {
 constexpr uint32_t city32impl_loop_body(const char* s, size_t len, uint32_t f, uint32_t g, uint32_t h, size_t iters);
 
 constexpr uint32_t city32impl_loop(const char* s, size_t len, uint32_t f, uint32_t g, uint32_t h, size_t iters) {
-    return iters != 0 ? city32impl_loop_body(s, len, f, h, h, iters)
+    return iters != 0 ? city32impl_loop_body(s, len, f, g, h, iters)
         : Rotate32(Rotate32(Rotate32(Rotate32(h + Rotate32(Rotate32(g, 11) * c1, 17) * c1, 19) * 5 + 0xe6546b64, 17) * c1 +
             Rotate32(Rotate32(f, 11) * c1, 17) * c1, 19) * 5 + 0xe6546b64, 17) * c1;
 }
