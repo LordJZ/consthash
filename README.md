@@ -28,3 +28,13 @@ Usage example:
 
     // Compute CityHash 64
     constexpr uint64_t result = consthash::city64("Hello World", 11);
+
+    // Compute CityHash 128
+    constexpr uint128_t result = consthash::city128("Save Rock and Roll", 18);
+
+    // Use 128-bit value as template argument
+    template<class VALUE> class my_class
+    {
+        static constexpr uint128_t value() { return CT2RT128(VALUE); }
+    };
+    my_class<RT2CT128_T(result)> instance;

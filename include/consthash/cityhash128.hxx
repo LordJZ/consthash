@@ -193,11 +193,13 @@ constexpr uint128_t CityHash128(const char *s, size_t len) {
 
 }; // namespace __detail
 
-constexpr __detail::uint128_t city128(const char *s, size_t len) {
+typedef __detail::uint128_t uint128_t;
+
+constexpr uint128_t city128(const char *s, size_t len) {
     return __detail::CityHash128(s, len);
 }
 
-constexpr __detail::uint128_t city128_seed(const char *s, size_t len, __detail::uint128_t seed) {
+constexpr uint128_t city128_seed(const char *s, size_t len, uint128_t seed) {
     return __detail::CityHash128WithSeed(s, len, seed);
 }
 
