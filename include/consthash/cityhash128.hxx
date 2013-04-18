@@ -148,9 +148,9 @@ constexpr uint128_t CityHash128WithSeed_loop1body1(
 {
     return CityHash128WithSeed_loop1body2(s + 128, len - 128, seed,
         WeakHashLen32WithSeeds(s + 64, v.second * k1, ((Rotate(z + y + v.first + Fetch64(s + 64 + 8), 37) * k1) ^ w.second) + w.first),
-        WeakHashLen32WithSeeds(s + 64 + 32, (Rotate(x + w.first, 33) * k1) + w.second, (Rotate(y + v.second + Fetch64(s + 64 + 48), 42) * k1 + v.first + Fetch64(s + 40)) + Fetch64(s + 64 + 16)),
+        WeakHashLen32WithSeeds(s + 64 + 32, (Rotate(x + w.first, 33) * k1) + w.second, (Rotate(y + v.second + Fetch64(s + 64 + 48), 42) * k1 + v.first + Fetch64(s + 64 + 40)) + Fetch64(s + 64 + 16)),
         Rotate(x + w.first, 33) * k1,
-        Rotate(y + v.second + Fetch64(s + 64 + 48), 42) * k1 + v.first + Fetch64(s + 40),
+        Rotate(y + v.second + Fetch64(s + 64 + 48), 42) * k1 + v.first + Fetch64(s + 64 + 40),
         (Rotate(z + y + v.first + Fetch64(s + 64 + 8), 37) * k1) ^ w.second);
 }
 
