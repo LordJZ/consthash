@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.6)
 project(consthashtests)
 
-SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Werror -std=c++11 -lpthread" )
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -std=c++11")
 
 include_directories("${PROJECT_SOURCE_DIR}/dep")
 include_directories("${PROJECT_SOURCE_DIR}/dep/cityhash")
@@ -21,4 +21,11 @@ add_executable(consthashtests
     tests/city128.cxx
     )
 
-target_link_libraries(consthashtests gtest rtfuncs cityhash)
+target_link_libraries(
+    consthashtests
+    rtfuncs
+    cityhash
+
+    gtest
+    pthread
+    )
