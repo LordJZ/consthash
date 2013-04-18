@@ -95,8 +95,8 @@ constexpr uint128_t CityHash128WithSeed_loop2sub(
     size_t tail_done)
 {
     return CityHash128WithSeed_loop2sub2(s, len, seed,
-        v,
         WeakHashLen32WithSeeds(s + len - tail_done, z + w.second + Fetch64(s + len - tail_done), v.second),
+        w,
         x * k0 + w.first,
         y,
         z + w.second - v.first + Fetch64(s + len - tail_done),
