@@ -67,6 +67,17 @@ constexpr uint32_t crc32(const char* str, size_t size)
     return crc32impl(0xffffffff, str, size) ^ 0xffffffff;
 }
 
+template <size_t N>
+constexpr uint32_t crc32(const char (&str)[N])
+{
+    return crc32(str, N - 1);
+}
+
+constexpr uint32_t crc32(std::nullptr_t)
+{
+    return crc32(nullptr, 0);
+}
+
 CONSTHASH_NAMESPACE_END;
 
 #endif // _CONSTHASH_CRC32_HXX

@@ -18,6 +18,17 @@ struct city_murmur_traits
         return consthash::__detail::murmur::CityMurmur(str, len, CT2RT128(seed));
     }
 
+    template <size_t N>
+    static constexpr uint128_t hash_ct(const char (&str)[N])
+    {
+        return consthash::__detail::murmur::CityMurmur(str, N - 1, CT2RT128(seed));
+    }
+
+    static constexpr uint128_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::__detail::murmur::CityMurmur(str, 0, CT2RT128(seed));
+    }
+
     static uint128_t hash_rt(const char* str, size_t len)
     {
         return CityMurmur(str, len, CT2RT128(seed));
@@ -47,6 +58,17 @@ struct city128_traits
         return consthash::city128(str, len);
     }
 
+    template <size_t N>
+    static constexpr uint128_t hash_ct(const char (&str)[N])
+    {
+        return consthash::city128(str);
+    }
+
+    static constexpr uint128_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::city128(str);
+    }
+
     static uint128_t hash_rt(const char* str, size_t len)
     {
         return CityHash128(str, len);
@@ -69,6 +91,17 @@ struct city128_seed_traits
     static constexpr uint128_t hash_ct(const char* str, size_t len)
     {
         return consthash::city128_seed(str, len, CT2RT128(seed));
+    }
+
+    template <size_t N>
+    static constexpr uint128_t hash_ct(const char (&str)[N])
+    {
+        return consthash::city128_seed(str, CT2RT128(seed));
+    }
+
+    static constexpr uint128_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::city128_seed(str, CT2RT128(seed));
     }
 
     static uint128_t hash_rt(const char* str, size_t len)

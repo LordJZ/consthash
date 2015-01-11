@@ -10,6 +10,17 @@ struct city64_traits
         return consthash::city64(str, len);
     }
 
+    template <size_t N>
+    static constexpr uint64_t hash_ct(const char (&str)[N])
+    {
+        return consthash::city64(str);
+    }
+
+    static constexpr uint64_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::city64(str);
+    }
+
     static uint64_t hash_rt(const char* str, size_t len)
     {
         return CityHash64(str, len);
@@ -30,6 +41,17 @@ struct city64_seed_traits
     static constexpr uint64_t hash_ct(const char* str, size_t len)
     {
         return consthash::city64_seed(str, len, seed);
+    }
+
+    template <size_t N>
+    static constexpr uint64_t hash_ct(const char (&str)[N])
+    {
+        return consthash::city64_seed(str, seed);
+    }
+
+    static constexpr uint64_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::city64_seed(str, seed);
     }
 
     static uint64_t hash_rt(const char* str, size_t len)
@@ -55,6 +77,17 @@ struct city64_seeds_traits
     static constexpr uint64_t hash_ct(const char* str, size_t len)
     {
         return consthash::city64_seeds(str, len, seed0, seed1);
+    }
+
+    template <size_t N>
+    static constexpr uint64_t hash_ct(const char (&str)[N])
+    {
+        return consthash::city64_seeds(str, seed0, seed1);
+    }
+
+    static constexpr uint64_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::city64_seeds(str, seed0, seed1);
     }
 
     static uint64_t hash_rt(const char* str, size_t len)

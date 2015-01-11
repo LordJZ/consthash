@@ -203,6 +203,24 @@ constexpr uint128_t city128_seed(const char *s, size_t len, uint128_t seed) {
     return __detail::CityHash128WithSeed(s, len, seed);
 }
 
+template <size_t N>
+constexpr uint128_t city128(const char (&s)[N]) {
+    return city128(s, N - 1);
+}
+
+template <size_t N>
+constexpr uint128_t city128_seed(const char (&s)[N], uint128_t seed) {
+    return city128_seed(s, N - 1, seed);
+}
+
+constexpr uint128_t city128(std::nullptr_t) {
+    return city128(nullptr, 0);
+}
+
+constexpr uint128_t city128_seed(std::nullptr_t, uint128_t seed) {
+    return __detail::CityHash128WithSeed(nullptr, 0, seed);
+}
+
 CONSTHASH_NAMESPACE_END;
 
 #endif // _CONSTHASH_CITYHASH64_HXX

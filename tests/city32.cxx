@@ -17,6 +17,17 @@ struct Hash32Len0to4_traits
         return consthash::__detail::Hash32Len0to4(str, len);
     }
 
+    template <size_t N>
+    static constexpr uint32_t hash_ct(const char (&str)[N])
+    {
+        return consthash::__detail::Hash32Len0to4(str, N - 1);
+    }
+
+    static constexpr uint32_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::__detail::Hash32Len0to4(str, 0);
+    }
+
     static uint32_t hash_rt(const char* str, size_t len)
     {
         return Hash32Len0to4(str, len);
@@ -36,6 +47,17 @@ struct Hash32Len5to12_traits
     static constexpr uint32_t hash_ct(const char* str, size_t len)
     {
         return consthash::__detail::Hash32Len5to12(str, len);
+    }
+
+    template <size_t N>
+    static constexpr uint32_t hash_ct(const char (&str)[N])
+    {
+        return consthash::__detail::Hash32Len5to12(str, N - 1);
+    }
+
+    static constexpr uint32_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::__detail::Hash32Len5to12(str, 0);
     }
 
     static uint32_t hash_rt(const char* str, size_t len)
@@ -59,6 +81,17 @@ struct Hash32Len13to24_traits
         return consthash::__detail::Hash32Len13to24(str, len);
     }
 
+    template <size_t N>
+    static constexpr uint32_t hash_ct(const char (&str)[N])
+    {
+        return consthash::__detail::Hash32Len13to24(str, N - 1);
+    }
+
+    static constexpr uint32_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::__detail::Hash32Len13to24(str, 0);
+    }
+
     static uint32_t hash_rt(const char* str, size_t len)
     {
         return Hash32Len13to24(str, len);
@@ -78,6 +111,17 @@ struct city32_traits
     static constexpr uint32_t hash_ct(const char* str, size_t len)
     {
         return consthash::city32(str, len);
+    }
+
+    template <size_t N>
+    static constexpr uint32_t hash_ct(const char (&str)[N])
+    {
+        return consthash::city32(str);
+    }
+
+    static constexpr uint32_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::city32(str);
     }
 
     static uint32_t hash_rt(const char* str, size_t len)

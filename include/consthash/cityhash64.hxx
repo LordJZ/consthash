@@ -83,6 +83,39 @@ constexpr uint64_t city64_seeds(const char *buf, size_t len, uint64_t seed0, uin
     return __detail::city64_seeds_impl(buf, len, seed0, seed1);
 }
 
+template <size_t N>
+constexpr uint64_t city64(const char (&buf)[N])
+{
+    return city64(buf, N - 1);
+}
+
+template <size_t N>
+constexpr uint64_t city64_seed(const char (&buf)[N], uint64_t seed)
+{
+    return city64_seed(buf, N - 1, seed);
+}
+
+template <size_t N>
+constexpr uint64_t city64_seeds(const char (&buf)[N], uint64_t seed0, uint64_t seed1)
+{
+    return city64_seeds(buf, N - 1, seed0, seed1);
+}
+
+constexpr uint64_t city64(std::nullptr_t)
+{
+    return city64(nullptr, 0);
+}
+
+constexpr uint64_t city64_seed(std::nullptr_t, uint64_t seed)
+{
+    return city64_seed(nullptr, 0, seed);
+}
+
+constexpr uint64_t city64_seeds(std::nullptr_t, uint64_t seed0, uint64_t seed1)
+{
+    return city64_seeds(nullptr, 0, seed0, seed1);
+}
+
 CONSTHASH_NAMESPACE_END;
 
 #endif // _CONSTHASH_CITYHASH64_HXX

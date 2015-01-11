@@ -93,6 +93,15 @@ constexpr uint32_t city32(const char* s, size_t len) {
     return __detail::city32impl(s, len);
 }
 
+template <size_t N>
+constexpr uint32_t city32(const char (&s)[N]) {
+    return city32(s, N - 1);
+}
+
+constexpr uint32_t city32(std::nullptr_t) {
+    return city32(nullptr, 0);
+}
+
 CONSTHASH_NAMESPACE_END;
 
 #endif // _CONSTHASH_CITYHASH32_HXX

@@ -11,6 +11,17 @@ struct crc64_traits
         return consthash::crc64(str, len);
     }
 
+    template <size_t N>
+    static constexpr uint64_t hash_ct(const char (&str)[N])
+    {
+        return consthash::crc64(str);
+    }
+
+    static constexpr uint64_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::crc64(str);
+    }
+
     static uint64_t hash_rt(const char* str, size_t len)
     {
         return crc64(0, str, len);
