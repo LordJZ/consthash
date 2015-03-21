@@ -11,6 +11,17 @@ struct crc32_traits
         return consthash::crc32(str, len);
     }
 
+    template <size_t N>
+    static constexpr uint32_t hash_ct(const char (&str)[N])
+    {
+        return consthash::crc32(str);
+    }
+
+    static constexpr uint32_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::crc32(str);
+    }
+
     static uint32_t hash_rt(const char* str, size_t len)
     {
         return crc32(0, str, len);

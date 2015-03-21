@@ -116,6 +116,17 @@ struct HashLen0to16_traits
         return consthash::__detail::HashLen0to16(str, len);
     }
 
+    template <size_t N>
+    static constexpr uint64_t hash_ct(const char (&str)[N])
+    {
+        return consthash::__detail::HashLen0to16(str, N - 1);
+    }
+
+    static constexpr uint64_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::__detail::HashLen0to16(str, 0);
+    }
+
     static uint64_t hash_rt(const char* str, size_t len)
     {
         return HashLen0to16(str, len);
@@ -137,6 +148,17 @@ struct HashLen17to32_traits
         return consthash::__detail::HashLen17to32(str, len);
     }
 
+    template <size_t N>
+    static constexpr uint64_t hash_ct(const char (&str)[N])
+    {
+        return consthash::__detail::HashLen17to32(str, N - 1);
+    }
+
+    static constexpr uint64_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::__detail::HashLen17to32(str, 0);
+    }
+
     static uint64_t hash_rt(const char* str, size_t len)
     {
         return HashLen17to32(str, len);
@@ -156,6 +178,17 @@ struct HashLen33to64_traits
     static constexpr uint64_t hash_ct(const char* str, size_t len)
     {
         return consthash::__detail::HashLen33to64(str, len);
+    }
+
+    template <size_t N>
+    static constexpr uint64_t hash_ct(const char (&str)[N])
+    {
+        return consthash::__detail::HashLen33to64(str, N - 1);
+    }
+
+    static constexpr uint64_t hash_ct(std::nullptr_t str)
+    {
+        return consthash::__detail::HashLen33to64(str, 0);
     }
 
     static uint64_t hash_rt(const char* str, size_t len)

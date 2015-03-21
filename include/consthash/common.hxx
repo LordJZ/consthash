@@ -3,6 +3,7 @@
 #ifndef _CONSTHASH_COMMON_HXX
 #define _CONSTHASH_COMMON_HXX
 
+#include <cstddef>
 #include <cstdint>
 
 #ifndef CONSTHASH_NAMESPACE_BEGIN

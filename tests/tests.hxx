@@ -28,10 +28,12 @@
         typedef TRAITS traits; \
         auto constexpr ct_res = traits::hash_ct(STR, LEN); \
         traits::compare<RT2CT(ct_res)>(traits::hash_rt(STR, LEN)); \
+        auto constexpr ct_res2 = traits::hash_ct(STR); \
+        traits::compare<RT2CT(ct_res2)>(traits::hash_rt(STR, LEN)); \
     }
 
 #define FOR_EACH_STR_0to4(DO, ...) \
-    DO(empty_string,    NULL, 0, ##__VA_ARGS__); \
+    DO(empty_string,    nullptr, 0, ##__VA_ARGS__); \
     DO(null_char,       "\0", 1, ##__VA_ARGS__); \
     DO(0xFF,            "\xFF", 1, ##__VA_ARGS__); \
     DO(1,               "1", 1, ##__VA_ARGS__); \
