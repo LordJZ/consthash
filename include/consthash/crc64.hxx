@@ -88,6 +88,11 @@ constexpr uint64_t crc64(const char* str, size_t size)
     return crc64impl(0xffffffff, str, size) ^ 0xffffffff;
 }
 
+constexpr uint64_t crc64(const char* str)
+{
+	return crc64impl(0xffffffff, str, __detail::str_len(str)) ^ 0xffffffff;
+}
+
 CONSTHASH_NAMESPACE_END;
 
 #endif // _CONSTHASH_CRC64_HXX

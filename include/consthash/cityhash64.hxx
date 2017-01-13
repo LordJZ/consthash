@@ -69,6 +69,11 @@ constexpr uint64_t city64(const char *buf, size_t len)
     return __detail::city64impl(buf, len);
 }
 
+constexpr uint64_t city64(const char *buf)
+{
+	return __detail::city64impl(buf, __detail::str_len(buf));
+}
+
 // Hash function for a byte array.  For convenience, a 64-bit seed is also
 // hashed into the result.
 constexpr uint64_t city64_seed(const char *buf, size_t len, uint64_t seed)

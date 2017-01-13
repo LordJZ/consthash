@@ -24,6 +24,11 @@ struct ensure
     static constexpr void ct() { }
 };
 
+constexpr size_t str_len(const char* const str)
+{
+	return *str ? (1 + str_len(str + 1)) : 0;
+}
+
 }; // namespace __detail
 
 CONSTHASH_NAMESPACE_END;

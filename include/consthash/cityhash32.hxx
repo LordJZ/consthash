@@ -93,6 +93,10 @@ constexpr uint32_t city32(const char* s, size_t len) {
     return __detail::city32impl(s, len);
 }
 
+constexpr uint32_t city32(const char* s) {
+	return __detail::city32impl(s, __detail::str_len(s));
+}
+
 CONSTHASH_NAMESPACE_END;
 
 #endif // _CONSTHASH_CITYHASH32_HXX
