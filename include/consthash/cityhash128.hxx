@@ -199,6 +199,10 @@ constexpr uint128_t city128(const char *s, size_t len) {
     return __detail::CityHash128(s, len);
 }
 
+constexpr uint128_t city128(const char *s) {
+	return __detail::CityHash128(s, __detail::str_len(s));
+}
+
 constexpr uint128_t city128_seed(const char *s, size_t len, uint128_t seed) {
     return __detail::CityHash128WithSeed(s, len, seed);
 }
